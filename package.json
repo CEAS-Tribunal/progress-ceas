@@ -1,0 +1,23 @@
+{
+  "name": "progress-ceas",
+  "description": "A form to allow UC students to provide feedback on their academic experiences to the CEAS Tribunal Academic Affairs Committee",
+  "author": "Ary Sharma",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aryanksh/progress-ceas"
+  },
+  "dependencies": {
+    "lodash.template": "^4.5.0",
+    "npm": "^9.7.1"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  },
+  "scripts": {
+    "build": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "gulp watch",
+    "dev": "gulp dev"
+  }
+}
