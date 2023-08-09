@@ -6,273 +6,121 @@
     <meta name="robots" content="noindex" />
     <!-- Block search indexing -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="A form to allow CEAS Tribunal members to submit reimbursement requests"
-    />
+    <meta name="description" content="A form to allow CEAS Tribunal members to submit reimbursement requests" />
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css"
-    />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" />
+    <link rel="icon" href="/images/favicon.ico" />
   </head>
+
   <body>
     <div class="intro">
       <header>
-        <a href="https://tribunal.uc.edu"
-          ><img src="./images/tribunal_logo.png" alt="Tribunal logo"
-        /></a>
+        <a href="https://tribunal.uc.edu"><img src="./images/tribunal_logo.png" alt="Tribunal logo" /></a>
       </header>
-      <div class="container request-form">
+      <div class="container progress-ceas-form">
         <div class="title">
           <h1>Progress CEAS Form</h1>
         </div>
         <p class="intro-info">
-          The College of Engineering and Applied Science Tribunal is dedicated
-          to making the CEAS student experience the best possible. To do this,
-          we need your input on what is working and the changes YOU want to see.
-          What you submit in this form will be carefully reviewed by the
-          student-led Academic Affairs Committee and acted upon as deemed
-          necessary. If you choose to share your contact information, you may be
-          invited to our committee meeting to discuss your concerns further.
-          Please feel free to reach out to us at
-          <strong id="admin-email"></strong>.
+          The College of Engineering and Applied Science Tribunal is dedicated to making the CEAS student experience the best possible. To do this, we need your
+          input on what is working and the changes YOU want to see. What you submit in this form will be carefully reviewed by the student-led Academic Affairs
+          Committee and acted upon as deemed necessary. If you choose to share your contact information, you may be invited to our committee meeting to discuss
+          your concerns further.
+          <br />
+          <br />
+          If you have any questions please feel free to reach out to Grace Fischer <strong id="admin-email">(fischegh@mail.uc.edu)</strong>.
         </p>
         <form>
           <label> Do you want to disclose your contact information? </label>
+          <label class="additional-info"> If "Yes", you may be invited to our committee meeting to further discuss your concerns if necessary. </label>
+          <label class="additional-info">If "No", you will still be able to submit your concerns anonymously.</label>
           <div class="radio-group">
             <div class="radio-button">
-              <input
-                type="radio"
-                id="contact-yes"
-                name="contact-yes"
-                value="yes"
-                autocomplete="off"
-              />
-              <label for="contact-yes">
-                Yes (you may be invited to our committee meeting to further
-                discuss your concerns if necessary)
-              </label>
+              <input type="radio" id="contact-yes" name="contact-yes" value="yes" autocomplete="off" />
+              <label for="contact-yes"> Yes </label>
             </div>
             <div class="radio-button">
-              <input
-                type="radio"
-                id="contact-no"
-                name="contact-no"
-                value="no"
-                autocomplete="off"
-              />
-              <label for="budgeted-expense-no">
-                No (you will still be able to submit your concerns anonymously)
-              </label>
+              <input type="radio" id="contact-no" name="contact-no" value="no" autocomplete="off" />
+              <label for="contact-no"> No </label>
             </div>
           </div>
-          <label> whats your full name? </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="ex:John Doe"
-            autocomplete="off"
-            style="padding-top: 0px"
-          />
-          <label> whats your graduation year? </label>
-          <input
-            type="number"
-            id="amount"
-            name="Grad-year"
-            placeholder="ex:2024"
-            autocomplete="off"
-          />
-          <label> whats your major? </label>
-          <input
-            type="text"
-            id="major"
-            name="major"
-            placeholder="ex:computer science"
-            autocomplete="off"
-          />
-          <label> whats your UC email? </label>
-          <input
-            type="text"
-            id="email"
-            name="email"
-            placeholder="ex: johndoe@mail.uc.edu"
-            autocomplete="off"
-          />
+        </form>
+        <!-- The form below only appears IF the user selects "yes" to the question above -->
+        <form id="user-info" name="user-info" style="visibility: hidden; height: 0px; overflow: hidden; opacity: 0; margin: -20px; padding: 0px">
+          <label> Full Name </label>
+          <input type="text" id="full-name" name="full-name" placeholder="ex: John Doe" autocomplete="off" style="padding-top: 0px" />
+          <label> Major </label>
+          <input type="text" id="major" name="major" placeholder="ex: Computer Science" autocomplete="off" />
+          <label> Graduation Year </label>
+          <input type="number" id="grad-year" name="grad-year" placeholder="ex: 2024" autocomplete="off" />
+          <label> UC Email </label>
+          <input type="text" id="email" name="email" placeholder="ex: johndoe@mail.uc.edu" autocomplete="off" />
           <label>What concern brought you to this form?</label>
-          <input type="text" id="concern" name="concern" autocomplete="off" />
-          <label>
-            How satisfied are you with your academic environment at CEAS?
-          </label>
+          <textarea type="text" id="concerns" name="concerns" autocomplete="off"></textarea>
+        </form>
+        <form id="general-questions" name="general-questions">
+          <label> How satisfied are you with your academic environment at CEAS? </label>
           <div class="radio-group">
             <div class="radio-button">
-              <input
-                type="radio"
-                id="academic-satisfied"
-                name="academic-satisfied"
-                value="satisfied"
-                autocomplete="off"
-              />
-              <label for="contact-yes"> satisfied </label>
+              <input type="radio" id="academic-satisfied" name="academic-satisfied" value="satisfied" autocomplete="off" />
+              <label for="academic-satisfied"> Satisfied </label>
             </div>
             <div class="radio-button">
-              <input
-                type="radio"
-                id="academic-somewwhat-satisfied"
-                name="academic-somewhat-satisfied"
-                value="somewhat satisfied"
-                autocomplete="off"
-              />
-              <label for="contact-yes">somewhat satisfied </label>
+              <input type="radio" id="academic-somewhat-satisfied" name="academic-somewhat-satisfied" value="somewhat satisfied" autocomplete="off" />
+              <label for="academic-somewhat-satisfied"> Somewhat satisfied </label>
             </div>
             <div class="radio-button">
-              <input
-                type="radio"
-                id="academic-unsatisfied"
-                name="academic-unsatisfied"
-                value="unsatisfied"
-                autocomplete="off"
-              />
-              <label for="contact-yes"> unsatisfied </label>
+              <input type="radio" id="academic-unsatisfied" name="academic-unsatisfied" value="unsatisfied" autocomplete="off" />
+              <label for="academic-unsatisfied"> Unsatisfied </label>
             </div>
           </div>
-          <label>
-            How satisfied are you with your co-op experience at CEAS?
-          </label>
+          <label> How satisfied are you with your co-op experience at CEAS? </label>
           <div class="radio-group">
             <div class="radio-button">
-              <input
-                type="radio"
-                id="coop-satisfied"
-                name="coop-satisfied"
-                value="satisfied"
-                autocomplete="off"
-              />
-              <label for="contact-yes"> satisfied </label>
+              <input type="radio" id="coop-satisfied" name="coop-satisfied" value="yes" autocomplete="off" />
+              <label for="coop-satisfied"> Satisfied </label>
             </div>
             <div class="radio-button">
-              <input
-                type="radio"
-                id="coop-somewwhat-satisfied"
-                name="coop-somewhat-satisfied"
-                value="somewhat satisfied"
-                autocomplete="off"
-              />
-              <label for="contact-yes">somewhat satisfied </label>
+              <input type="radio" id="coop-somewhat-satisfied" name="coop-somewhat-satisfied" value="yes" autocomplete="off" />
+              <label for="coop-somewhat-satisfied"> Somewhat satisfied </label>
             </div>
             <div class="radio-button">
-              <input
-                type="radio"
-                id="coop-unsatisfied"
-                name="coop-unsatisfied"
-                value="unsatisfied"
-                autocomplete="off"
-              />
-              <label for="contact-yes"> unsatisfied </label>
+              <input type="radio" id="coop-unsatisfied" name="coop-unsatisfied" value="yes" autocomplete="off" />
+              <label for="coop-unsatisfied"> Unsatisfied </label>
             </div>
           </div>
-          <label
-            >What comments on academics do you have? (could be about academic
-            advising, professors, deans, etc.)</label
-          >
-          <textarea
-            type="text"
-            id="academic-comment"
-            name="acedemic-comment"
-            autocomplete="off"
-          ></textarea>
-          <!--<input type="text" id="academic-comment" name="acedemic-concern" autocomplete="off">-->
-          <label
-            >What comments on co-op do you have? (could be co-op advisors,
-            employers, career fair, or EEP/research)</label
-          >
-          <input
-            type="text"
-            id="coop-comment"
-            name="coop-comment"
-            autocomplete="off"
-          />
-          <label
-            >What specific changes do you want to see based on your previous
-            responses?
-          </label>
-          <input type="text" id="change" name="change" autocomplete="off" />
-
-          <label
-            >What resources have been helpful to you in navigating your academic
-            life?</label
-          >
-          <input
-            type="text"
-            id="acedemic-resource"
-            name="acedemic-rersource"
-            autocomplete="off"
-          />
-          <label
-            >What resources have been helpful in navigating your co-op searches?
-          </label>
-          <input
-            type="text"
-            id="coop-resource"
-            name="coop-resource"
-            autocomplete="off"
-          />
-          <label>
-            Would you be willing to talk to the student-led Academic Affairs
-            Committee about your comments?
-          </label>
+          <label>What comments on academics do you have? (could be about academic advising, professors, deans, etc.)</label>
+          <textarea type="text" id="academic-comment" name="academic-comment" autocomplete="off"></textarea>
+          <label>What comments on co-op do you have? (could be co-op advisors, employers, career fair, or EEP/research)</label>
+          <textarea type="text" id="coop-comment" name="coop-comment" autocomplete="off"></textarea>
+          <label>What specific changes do you want to see based on your previous responses? </label>
+          <textarea type="text" id="changes" name="changes" autocomplete="off"></textarea>
+          <label>What resources have been helpful to you in navigating your academic life?</label>
+          <label class="additional-info"> Examples: your advisors, student organizations, learning communities,... </label>
+          <textarea type="text" id="academic-resources" name="academic-resources" autocomplete="off"></textarea>
+          <label>What resources have been helpful in navigating your co-op searches? </label>
+          <label class="additional-info"> Examples: your advisors, student organizations, career fair, alumni,... </label>
+          <textarea type="text" id="coop-resources" name="coop-resources" autocomplete="off"></textarea>
+          <label> Would you be willing to talk to the student-led Academic Affairs Committee about your comments? </label>
           <div class="radio-group">
             <div class="radio-button">
-              <input
-                type="radio"
-                id="student-led-yes"
-                name="student-led-yes"
-                value="yes"
-                autocomplete="off"
-              />
+              <input type="radio" id="student-led-yes" name="student-led-yes" value="yes" autocomplete="off" />
               <label for="student-led-yes"> Yes </label>
             </div>
             <div class="radio-button">
-              <input
-                type="radio"
-                id="student-led-no"
-                name="student-led-no"
-                value="no"
-                autocomplete="off"
-              />
+              <input type="radio" id="student-led-no" name="student-led-no" value="no" autocomplete="off" />
               <label for="student-led-no"> No </label>
             </div>
           </div>
-          <label>
-            Would you like us to follow up with you on any steps we take?
-          </label>
+          <label> Would you like us to follow up with you on any steps we take? </label>
           <div class="radio-group">
             <div class="radio-button">
-              <input
-                type="radio"
-                id="follow-yes"
-                name="follow-yes"
-                value="yes"
-                autocomplete="off"
-              />
-              <label for="follow-yes">
-                Yes (you may be invited to our committee meeting to further
-                discuss your concerns if necessary)
-              </label>
+              <input type="radio" id="follow-up-yes" name="follow-up-yes" value="yes" autocomplete="off" />
+              <label for="follow-up-yes"> Yes </label>
             </div>
             <div class="radio-button">
-              <input
-                type="radio"
-                id="follow-no"
-                name="follow-no"
-                value="no"
-                autocomplete="off"
-              />
-              <label for="follow-no">
-                No (you will still be able to submit your concerns anonymously)
-              </label>
+              <input type="radio" id="follow-up-no" name="follow-up-no" value="no" autocomplete="off" />
+              <label for="follow-up-no"> No </label>
             </div>
           </div>
 
@@ -289,20 +137,17 @@
         <div class="reserved-box">
           <p class="success-emoji">🎉</p>
           <p>
-            We have sent the form
+            We have sent you an email to
+            <span class="reserved-email"></span> confirming your reimbursement request.
           </p>
         </div>
+        a
       </div>
     </div>
     <footer>
-      <p>
-        University of Cincinnati | © 2020 College of Engineering and Applied
-        Science Tribunal
-      </p>
-      <p>
-        For any questions or comments, contact us at uc.eas.tribunal@gmail.com.
-      </p>
+      <p>University of Cincinnati | © 2023 College of Engineering and Applied Science Tribunal</p>
+      <p>For any questions or comments, contact us at ceastribunaltechnology@gmail.com.</p>
     </footer>
-    <script src="scripts/main.js" type="module"></script>
+    <script src="build/main.min.js"></script>
   </body>
 </html>
