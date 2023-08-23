@@ -28,7 +28,8 @@
           your concerns further.
           <br />
           <br />
-          If you have any questions please feel free to reach out to Grace Fischer <strong id="admin-email">(fischegh@mail.uc.edu)</strong>.
+          If you have any questions please feel free to reach out to Grace Fischer <strong id="admin-email">(fischegh@mail.uc.edu)</strong> and Keenan Harvey
+          <strong id="admin-email">(harveyk3@mail.uc.edu)</strong>.
         </p>
         <form>
           <label> Do you want to disclose your contact information? </label>
@@ -55,10 +56,10 @@
           <input type="number" id="grad-year" name="grad-year" placeholder="ex: 2024" autocomplete="off" />
           <label> UC Email </label>
           <input type="text" id="email" name="email" placeholder="ex: johndoe@mail.uc.edu" autocomplete="off" />
-          <label>What concern brought you to this form?</label>
-          <textarea type="text" id="concerns" name="concerns" autocomplete="off"></textarea>
         </form>
         <form id="general-questions" name="general-questions">
+          <label>What concern brought you to this form?</label>
+          <textarea type="text" id="concerns" name="concerns" placeholder="Enter your answer" autocomplete="off"></textarea>
           <label> How satisfied are you with your academic environment at CEAS? </label>
           <div class="radio-group">
             <div class="radio-button">
@@ -90,37 +91,41 @@
             </div>
           </div>
           <label>What comments on academics do you have? (could be about academic advising, professors, deans, etc.)</label>
-          <textarea type="text" id="academic-comment" name="academic-comment" autocomplete="off"></textarea>
+          <textarea type="text" id="academic-comment" name="academic-comment" placeholder="Enter your answer" autocomplete="off"></textarea>
           <label>What comments on co-op do you have? (could be co-op advisors, employers, career fair, or EEP/research)</label>
-          <textarea type="text" id="coop-comment" name="coop-comment" autocomplete="off"></textarea>
+          <textarea type="text" id="coop-comment" name="coop-comment" placeholder="Enter your answer" autocomplete="off"></textarea>
           <label>What specific changes do you want to see based on your previous responses? </label>
-          <textarea type="text" id="changes" name="changes" autocomplete="off"></textarea>
+          <textarea type="text" id="changes" name="changes" placeholder="Enter your answer" autocomplete="off"></textarea>
           <label>What resources have been helpful to you in navigating your academic life?</label>
           <label class="additional-info"> Examples: your advisors, student organizations, learning communities,... </label>
-          <textarea type="text" id="academic-resources" name="academic-resources" autocomplete="off"></textarea>
+          <textarea type="text" id="academic-resources" name="academic-resources" placeholder="Enter your answer" autocomplete="off"></textarea>
           <label>What resources have been helpful in navigating your co-op searches? </label>
           <label class="additional-info"> Examples: your advisors, student organizations, career fair, alumni,... </label>
-          <textarea type="text" id="coop-resources" name="coop-resources" autocomplete="off"></textarea>
-          <label> Would you be willing to talk to the student-led Academic Affairs Committee about your comments? </label>
-          <div class="radio-group">
-            <div class="radio-button">
-              <input type="radio" id="student-led-yes" name="student-led-yes" value="yes" autocomplete="off" />
-              <label for="student-led-yes"> Yes </label>
-            </div>
-            <div class="radio-button">
-              <input type="radio" id="student-led-no" name="student-led-no" value="no" autocomplete="off" />
-              <label for="student-led-no"> No </label>
+          <textarea type="text" id="coop-resources" name="coop-resources" placeholder="Enter your answer" autocomplete="off"></textarea>
+          <div id="student-led" style="visibility: hidden; height: 0px; overflow: hidden; opacity: 0">
+            <label> Would you be willing to talk to the student-led Academic Affairs Committee about your comments? </label>
+            <div class="radio-group">
+              <div class="radio-button">
+                <input type="radio" id="student-led-yes" name="student-led-yes" value="yes" autocomplete="off" />
+                <label for="student-led-yes"> Yes </label>
+              </div>
+              <div class="radio-button">
+                <input type="radio" id="student-led-no" name="student-led-no" value="no" autocomplete="off" />
+                <label for="student-led-no"> No </label>
+              </div>
             </div>
           </div>
-          <label> Would you like us to follow up with you on any steps we take? </label>
-          <div class="radio-group">
-            <div class="radio-button">
-              <input type="radio" id="follow-up-yes" name="follow-up-yes" value="yes" autocomplete="off" />
-              <label for="follow-up-yes"> Yes </label>
-            </div>
-            <div class="radio-button">
-              <input type="radio" id="follow-up-no" name="follow-up-no" value="no" autocomplete="off" />
-              <label for="follow-up-no"> No </label>
+          <div id="follow-up" style="visibility: hidden; height: 0px; overflow: hidden; opacity: 0">
+            <label> Would you like us to follow up with you on any steps we take? </label>
+            <div class="radio-group">
+              <div class="radio-button">
+                <input type="radio" id="follow-up-yes" name="follow-up-yes" value="yes" autocomplete="off" />
+                <label for="follow-up-yes"> Yes </label>
+              </div>
+              <div class="radio-button">
+                <input type="radio" id="follow-up-no" name="follow-up-no" value="no" autocomplete="off" />
+                <label for="follow-up-no"> No </label>
+              </div>
             </div>
           </div>
 

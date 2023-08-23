@@ -21,6 +21,7 @@ body {
 }
 
 /* Form */
+
 .intro {
   min-height: 100vh;
   background: #cb2d3e center; /* Fallback for old browsers */
@@ -126,11 +127,11 @@ form label[for="download"] {
   font-family: "'Open Sans'", sans-serif;
   font-weight: 300;
   color: #828282;
-  padding: 0px 0px 0px;
+  padding: 0;
   margin: 8px auto 0;
 }
 
-#concern {
+#concerns {
   margin-bottom: 20px;
 }
 
@@ -201,8 +202,7 @@ form input[type="button"] {
   font-size: 20px;
   text-transform: uppercase;
   transition: background-color 0.6s, color 0.6s;
-  margin: 20px auto;
-  margin-top: 35px;
+  margin: 35px auto 20px;
   display: block;
   width: 90%;
   padding: 10px;

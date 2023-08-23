@@ -1,4 +1,3 @@
-
 const discloseContactInfoYes = document.querySelector(".intro #contact-yes");
 const discloseContactInfoNo = document.querySelector(".intro #contact-no");
 
@@ -22,6 +21,9 @@ const formChanges = document.querySelector(".intro #changes");
 const formAcademicResources = document.querySelector(".intro #academic-resources");
 const formCoopResources = document.querySelector(".intro #coop-resources");
 
+const divStudentLed = document.querySelector(".intro #student-led");
+const divFollowUp = document.querySelector(".intro #follow-up");
+
 const studentLedYes = document.querySelector(".intro #student-led-yes");
 const studentLedNo = document.querySelector(".intro #student-led-no");
 const followUpYes = document.querySelector(".intro #follow-up-yes");
@@ -34,11 +36,21 @@ const formSubmitButton = document.querySelector(".intro #submit-button");
 discloseContactInfoYes.onclick = function discloseContactInfoYesOnClick() {
   discloseContactInfoNo.checked = false;
   formUserInfo.style.visibility = "visible";
-  formUserInfo.style.height = "532px";
+  formUserInfo.style.height = "410px";
   formUserInfo.style.overflow = "visible";
   formUserInfo.style.opacity = "1";
   formUserInfo.style.margin = "40px auto";
   formUserInfo.style.padding = "10px";
+
+  divStudentLed.style.visibility = "visible";
+  divStudentLed.style.height = "156px";
+  divStudentLed.style.overflow = "visible";
+  divStudentLed.style.opacity = "1";
+
+  divFollowUp.style.visibility = "visible";
+  divFollowUp.style.height = "156px";
+  divFollowUp.style.overflow = "visible";
+  divFollowUp.style.opacity = "1";
 };
 
 /**
@@ -52,6 +64,16 @@ discloseContactInfoNo.onclick = function discloseContactInfoNoOnClick() {
   formUserInfo.style.opacity = "0";
   formUserInfo.style.margin = "-20px";
   formUserInfo.style.padding = "0px";
+
+  divStudentLed.style.visibility = "hidden";
+  divStudentLed.style.height = "0px";
+  divStudentLed.style.overflow = "hidden";
+  divStudentLed.style.opacity = "0";
+
+  divFollowUp.style.visibility = "hidden";
+  divFollowUp.style.height = "0px";
+  divFollowUp.style.overflow = "hidden";
+  divFollowUp.style.opacity = "0";
 };
 
 /**
@@ -104,4 +126,3 @@ followUpYes.onclick = function followUpYesOnClick() {
 followUpNo.onclick = function followUpNoOnClick() {
   followUpYes.checked = false;
 };
-
