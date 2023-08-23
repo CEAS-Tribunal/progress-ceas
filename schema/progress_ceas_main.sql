@@ -23,25 +23,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `progress_main`
+-- Table structure for table `progress_ceas_main`
 --
 
-CREATE TABLE `progress_main` (
+CREATE TABLE `progress_ceas_main` (
   `uid` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
   `grad_year` int(11) NOT NULL,
-  `major` varchar(254) NOT NULL,
-  `email` varchar(254) NOT NULL,
+  `major` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `concern` varchar(254) NOT NULL,
-  `acedemic_satisfied_level` varchar(254) NOT NULL,
+  `academic_satisfied_level` varchar(254) NOT NULL,
   `coop_satisfied_level` varchar(254) NOT NULL,
-  `acedemic_comment` varchar(254) NOT NULL,
+  `academic_comment` varchar(254) NOT NULL,
   `coop_comment` varchar(254) NOT NULL,
-  `change` varchar(254) NOT NULL,
-  `acedemic_reasource` varchar(254) NOT NULL,
-  `coop_reasource` varchar(254) NOT NULL,
+  `specific_changes` varchar(254) NOT NULL,
+  `academic_resources` varchar(254) NOT NULL,
+  `coop_resources` varchar(254) NOT NULL,
   `student_led` varchar(254) NOT NULL,
-  `follow` varchar(254) NOT NULL
+  `follow_up` varchar(254) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -49,9 +49,9 @@ CREATE TABLE `progress_main` (
 --
 
 --
--- Indexes for table `progress_main`
+-- Indexes for table `progress_ceas_main`
 --
-ALTER TABLE `progress_main`
+ALTER TABLE `progress_ceas_main`
   ADD PRIMARY KEY (`uid`);
 
 --
@@ -59,9 +59,9 @@ ALTER TABLE `progress_main`
 --
 
 --
--- AUTO_INCREMENT for table `progress_main`
+-- AUTO_INCREMENT for table `progress_ceas_main`
 --
-ALTER TABLE `progress_main`
+ALTER TABLE `progress_ceas_main`
   MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
