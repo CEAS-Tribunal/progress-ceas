@@ -131,7 +131,7 @@ form label[for="download"] {
   margin: 8px auto 0;
 }
 
-#concerns {
+#concern {
   margin-bottom: 20px;
 }
 
@@ -141,8 +141,7 @@ form input[type="email"],
 form input[type="date"],
 form input[type="time"],
 form input[type="file"],
-form input[type="image"],
-form textarea {
+form input[type="image"] {
   width: 90%;
   padding: 12px 0px;
   margin: 8px auto;
@@ -153,6 +152,17 @@ form textarea {
   box-sizing: border-box;
   transition: border-bottom 0.1s;
   font-size: 15px;
+}
+
+textarea {
+  width: 90%;
+  padding: 12px 0px;
+  margin: 8px auto;
+  display: block;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  font-family: "Roboto", sans-serif;
+  max-width: 90%;
 }
 
 form input[type="text"].missing,
