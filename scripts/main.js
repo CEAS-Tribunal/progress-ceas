@@ -1,4 +1,4 @@
-import reserveTicket from "./reserve";
+import reserveTicket from "./reserve.js";
 
 const discloseContactInfoYes = document.querySelector(".intro #contact-yes");
 const discloseContactInfoNo = document.querySelector(".intro #contact-no");
