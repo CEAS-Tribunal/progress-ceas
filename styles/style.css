@@ -161,8 +161,18 @@ textarea {
   display: block;
   border: 2px solid #ccc;
   border-radius: 6px;
+  outline: none;
   font-family: "Roboto", sans-serif;
   max-width: 90%;
+  transition: border-bottom 75ms ease-in;
+}
+
+textarea:hover:active {
+  border-bottom: 3.25px solid #cb2d3e;
+}
+
+textarea:active {
+  border-bottom: 3.25px solid #cb2d3e;
 }
 
 form input[type="text"].missing,
