@@ -4,10 +4,10 @@ const discloseContactInfoYes = document.querySelector(".intro #contact-yes");
 const discloseContactInfoNo = document.querySelector(".intro #contact-no");
 
 const formUserInfo = document.querySelector(".intro #user-info");
-const fullName = document.querySelector(".intro #full-name");
-const major = document.querySelector(".intro #major");
-const gradYear = document.querySelector(".intro #grad-year");
-const email = document.querySelector(".intro #email");
+const formFullName = document.querySelector(".intro #full-name");
+const formMajor = document.querySelector(".intro #major");
+const formGradYear = document.querySelector(".intro #grad-year");
+const formEmail = document.querySelector(".intro #email");
 
 const concern = document.querySelector(".intro #concern");
 const academicEnvironmentSatisfied = document.querySelector(".intro #academic-satisfied");
@@ -147,6 +147,10 @@ followUpNo.onclick = function followUpNoOnClick() {
  */
 formSubmitButton.onclick = function formSubmitButtonOnClick() {
   let discloseContact;
+  let fullName;
+  let major;
+  let gradYear;
+  let email;
   let academicSatisfiedLevel;
   let coopSatisfiedLevel;
   let studentLed;
@@ -155,43 +159,55 @@ formSubmitButton.onclick = function formSubmitButtonOnClick() {
   // true means user inputs contact info. the user is also prompted an academic affairs question and a follow up question
   // false means user does NOT input contact info. respective variables are set to empty strings.
   if (discloseContactInfoYes.checked) {
-    disclose_contact = "Yes";
+    discloseContact = discloseContactInfoYes;
+    fullName = formFullName;
+    major = formMajor;
+    gradYear = formGradYear;
+    email = formEmail;
 
     if (studentLedYes.checked) {
-      student_led = "Yes";
+      studentLed = studentLedYes;
+    } else if (studentLedNo.checked) {
+      studentLed = studentLedNo;
     } else {
-      student_led = "No";
+      studentLed = "";
     }
 
     if (followUpYes.checked) {
-      follow_up = "Yes";
+      followUp = followUpYes;
+    } else if (followUpNo.checked) {
+      followUp = followUpNo;
     } else {
-      follow_up = "No";
+      followUp = "";
     }
-  } else {
-    disclose_contact = "No";
-    fullName = "";
-    major = "";
-    gradYear = "";
-    email = "";
-    student_led = "No";
-    follow_up = "No";
+  } else if (discloseContactInfoNo.checked) {
+    discloseContact = discloseContactInfoNo;
+    fullName = "n/a";
+    major = "n/a";
+    gradYear = "n/a";
+    email = "n/a";
+    studentLed = "n/a";
+    followUp = "n/a";
   }
 
   if (academicEnvironmentSatisfied.checked) {
-    academic_satisfied_level = "Satisfied";
+    academicSatisfiedLevel = academicEnvironmentSatisfied; //"Satisfied"; // = academicEnvironmentSatisfied;
   } else if (academicEnvironmentSomewhatSatisfied.checked) {
-    academic_satisfied_level = "Somewhat satisfied";
+    academicSatisfiedLevel = academicEnvironmentSomewhatSatisfied;
+  } else if (academicEnvironmentUnsatisfied.checked) {
+    academicSatisfiedLevel = academicEnvironmentUnsatisfied;
   } else {
-    academic_satisfied_level = "Unsatisfied";
+    academicSatisfiedLevel = "";
   }
 
   if (coopEnvironmentSatisfied.checked) {
-    coop_satisfied_level = "Satisfied";
+    coopSatisfiedLevel = coopEnvironmentSatisfied;
   } else if (coopEnvironmentSomewhatSatisfied.checked) {
-    coop_satisfied_level = "Somewhat satisfied";
+    coopSatisfiedLevel = coopEnvironmentSomewhatSatisfied;
+  } else if (coopEnvironmentUnsatisfied.checked) {
+    coopSatisfiedLevel = coopEnvironmentUnsatisfied;
   } else {
-    coop_satisfied_level = "Unsatisfied";
+    coopSatisfiedLevel = "";
   }
 
   reserveTicket(
