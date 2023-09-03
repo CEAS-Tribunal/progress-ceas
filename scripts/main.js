@@ -1,4 +1,5 @@
 import reserveTicket from "./reserve.js";
+/*TODO: Add on-click event to textareas*/
 
 const discloseContactInfoYes = document.querySelector(".intro #contact-yes");
 const discloseContactInfoNo = document.querySelector(".intro #contact-no");
@@ -147,57 +148,23 @@ followUpNo.onclick = function followUpNoOnClick() {
  */
 formSubmitButton.onclick = function formSubmitButtonOnClick() {
   let discloseContact;
-  let fullName;
-  let major;
-  let gradYear;
-  let email;
-  let academicSatisfiedLevel;
-  let coopSatisfiedLevel;
-  let studentLed;
-  let followUp;
+  let academicSatisfiedLevel = "";
+  let coopSatisfiedLevel = "";
 
   // true means user inputs contact info. the user is also prompted an academic affairs question and a follow up question
-  // false means user does NOT input contact info. respective variables are set to empty strings.
+  // false means user does NOT input contact info
   if (discloseContactInfoYes.checked) {
     discloseContact = discloseContactInfoYes;
-    fullName = formFullName;
-    major = formMajor;
-    gradYear = formGradYear;
-    email = formEmail;
-
-    if (studentLedYes.checked) {
-      studentLed = studentLedYes;
-    } else if (studentLedNo.checked) {
-      studentLed = studentLedNo;
-    } else {
-      studentLed = "";
-    }
-
-    if (followUpYes.checked) {
-      followUp = followUpYes;
-    } else if (followUpNo.checked) {
-      followUp = followUpNo;
-    } else {
-      followUp = "";
-    }
   } else if (discloseContactInfoNo.checked) {
     discloseContact = discloseContactInfoNo;
-    fullName = "n/a";
-    major = "n/a";
-    gradYear = "n/a";
-    email = "n/a";
-    studentLed = "n/a";
-    followUp = "n/a";
   }
 
   if (academicEnvironmentSatisfied.checked) {
-    academicSatisfiedLevel = academicEnvironmentSatisfied; //"Satisfied"; // = academicEnvironmentSatisfied;
+    academicSatisfiedLevel = academicEnvironmentSatisfied;
   } else if (academicEnvironmentSomewhatSatisfied.checked) {
     academicSatisfiedLevel = academicEnvironmentSomewhatSatisfied;
   } else if (academicEnvironmentUnsatisfied.checked) {
     academicSatisfiedLevel = academicEnvironmentUnsatisfied;
-  } else {
-    academicSatisfiedLevel = "";
   }
 
   if (coopEnvironmentSatisfied.checked) {
@@ -206,16 +173,10 @@ formSubmitButton.onclick = function formSubmitButtonOnClick() {
     coopSatisfiedLevel = coopEnvironmentSomewhatSatisfied;
   } else if (coopEnvironmentUnsatisfied.checked) {
     coopSatisfiedLevel = coopEnvironmentUnsatisfied;
-  } else {
-    coopSatisfiedLevel = "";
   }
 
   reserveTicket(
     discloseContact,
-    fullName,
-    major,
-    gradYear,
-    email,
     concern,
     academicSatisfiedLevel,
     coopSatisfiedLevel,
@@ -223,8 +184,6 @@ formSubmitButton.onclick = function formSubmitButtonOnClick() {
     coopComment,
     specificChanges,
     academicResources,
-    coopResources,
-    studentLed,
-    followUp
+    coopResources
   );
 };
