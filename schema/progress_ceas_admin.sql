@@ -32,7 +32,7 @@ CREATE TABLE `progress_ceas_admin` (
   `chair_1_email` varchar(254) NOT NULL,
   `chair_2_name` varchar(128) NOT NULL,
   `chair_2_email` varchar(254) NOT NULL,
-    `chair_3_name` varchar(128) NOT NULL,
+  `chair_3_name` varchar(128) NOT NULL,
   `chair_3_email` varchar(254) NOT NULL,
   `super_email` varchar(254) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
