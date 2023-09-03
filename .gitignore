@@ -3,3 +3,4 @@
 node_modules
 build
 api/includes/mysqli.php
+api/includes/PHPMailer/language
