@@ -28,10 +28,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `progress_ceas_main` (
   `uid` int(11) NOT NULL,
+  `date` varchar(50) NOT NULL,
   `disclose_contact` varchar(10) NOT NULL,
   `name` varchar(128) NOT NULL,
   `major` varchar(50) NOT NULL,
-  `grad_year` int(11) NOT NULL,
+  `grad_year` varchar(11) NOT NULL,
   `email` varchar(100) NOT NULL,
   `concern` varchar(254) NOT NULL,
   `academic_satisfied_level` varchar(254) NOT NULL,
