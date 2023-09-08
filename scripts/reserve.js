@@ -10,7 +10,7 @@ import displayWarning from "./warning-view.js";
 const checkField = function checkForMissingField(field) {
   let isFieldMissing = false;
 
-  if (field === "" || field.value === "") {
+  if (field === "N/A" || field.value === "N/A") {
     //field.classList.add("missing");
     isFieldMissing = true;
   }
@@ -50,14 +50,14 @@ const sendRequest = function sendRequest(
   const followUpYes = document.querySelector(".intro #follow-up-yes");
   const followUpNo = document.querySelector(".intro #follow-up-no");
 
-  let fullName = "";
-  let major = "";
-  let gradYear = "";
-  let email = "";
-  let studentLed = "";
-  let followUp = "";
+  let fullName = "N/A";
+  let major = "N/A";
+  let gradYear = "N/A";
+  let email = "N/A";
+  let studentLed = "N/A";
+  let followUp = "N/A";
 
-  if (discloseContact.value === "yes") {
+  if (discloseContact.value === "Yes") {
     let isFieldMissing = false;
     let missingItems = [];
     fullName = formFullName.value;
@@ -66,15 +66,15 @@ const sendRequest = function sendRequest(
     email = formEmail.value;
 
     if (studentLedYes.checked) {
-      studentLed = studentLedYes;
+      studentLed = studentLedYes.value;
     } else if (studentLedNo.checked) {
-      studentLed = studentLedNo;
+      studentLed = studentLedNo.value;
     }
 
     if (followUpYes.checked) {
-      followUp = followUpYes;
+      followUp = followUpYes.value;
     } else if (followUpNo.checked) {
-      followUp = followUpNo;
+      followUp = followUpNo.value;
     }
 
     missingItems.push(checkField(fullName));
@@ -88,7 +88,7 @@ const sendRequest = function sendRequest(
       isFieldMissing = true;
       //TODO: count number of 'true' elements in the array and add that to the warning message: https://www.geeksforgeeks.org/count-occurrences-of-all-items-in-an-array-in-javascript/#
       // Use backticks (` `) when injecting a variable into displayWarning (rather than concatenation)
-      displayWarning("You have not filled out your contact info or the last 2 mc questions.");
+      displayWarning("You have not filled out your contact info and/or the last 2 mc questions.");
 
       setTimeout(() => {
         formSubmitButton.style.display = "block";
@@ -100,12 +100,18 @@ const sendRequest = function sendRequest(
   }
   displayWarning("preparing to send data to php backend");
 
+  // Only keep this for development. Delete this when pushing to production
+  setTimeout(() => {
+    formSubmitButton.style.display = "block";
+    formLoader.style.display = "none";
+  }, 500);
+
   const submissionData = {
     discloseContact: discloseContact.value,
-    fullName: fullName.value,
-    major: major.value,
-    gradYear: gradYear.value,
-    email: email.value,
+    fullName: fullName,
+    major: major,
+    gradYear: gradYear,
+    email: email,
     concern: concern.value,
     academicSatisfiedLevel: academicSatisfiedLevel.value,
     coopSatisfiedLevel: coopSatisfiedLevel.value,
@@ -114,12 +120,37 @@ const sendRequest = function sendRequest(
     specificChanges: specificChanges.value,
     academicResources: academicResources.value,
     coopResources: coopResources.value,
-    studentLed: studentLed.value,
-    followUp: followUp.value,
+    studentLed: studentLed,
+    followUp: followUp,
   };
 
-  //TODO: API POST call to send_request.php!
-  // See ceas-reimbursement vscode stuff for how to do it
+  const submissionFormData = new FormData();
+
+  Object.keys(submissionData).forEach((data) => {
+    submissionFormData.append(data, submissionData[data]);
+  });
+
+  fetch("api/send_request.php", {
+    method: "POST",
+    body: submissionFormData,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.status === "success") {
+        document.querySelector(".intro .request-form").style.display = "none";
+        document.querySelector(".reserved-ticket").style.display = "block";
+        document.querySelector(".reserved-ticket .reserved-email").textContent = email.value;
+      } else {
+        displayWarning(data.message);
+        formLoader.style.display = "none";
+        formSubmitButton.style.display = "block";
+      }
+    })
+    .catch(() => {
+      displayWarning("Something went wrong while sending your information. Please check your network connection and try again.");
+      formLoader.style.display = "none";
+      formSubmitButton.style.display = "block";
+    });
 };
 
 export default function reserveTicket(
@@ -153,7 +184,7 @@ export default function reserveTicket(
       isFieldMissing = true;
       //TODO: count number of 'true' elements in the array and add that to the warning message: https://www.geeksforgeeks.org/count-occurrences-of-all-items-in-an-array-in-javascript/#
       // Use backticks (` `) when injecting a variable into displayWarning (rather than concatenation)
-      displayWarning("You have not completed the form.");
+      displayWarning("You have not completed the main form.");
     }
 
     if (!isFieldMissing) {
