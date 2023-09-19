@@ -57,7 +57,7 @@ $result_data->message = "";
 // regex form input validation
 if ($disclose_contact == "Yes") {
     // check name
-    if (!($name == "") && !preg_match("/^[\w\ \'\.\/]{1,128}$/", $name)) {
+    if (!($name == "") && !preg_match("/^[\w\ \'\.\/\\\\]{1,128}$/", $name)) {
         $result_data->message = 'Your name is invalid. Please only use latin characters a-z with an optional '
             . 'apostrophe or period. Your name is also limited to 128 characters.';
         echo json_encode($result_data);
@@ -87,48 +87,49 @@ if ($disclose_contact == "Yes") {
         die();
     }
 }
+
 // check concern
-if (!preg_match("/^[A-Za-z0-9\.\!\@\#\$\%\^\& \*\(\)\-\_\+\=\`\~\,\.\?\/\<\>\;\:\.]{1,500}$/", $concern)) {
-    $result_data->message = 'Your concern(s) are invalid. Please only use latin characters a-z with an optional \'!@#$%^&*()_-+=:;?.`~<>, \',.'
-        . 'apostrophe, or period. Your response is also limited to 500 characters.';
+if (!preg_match("/^[A-Za-z0-9\.\'\!\@\#\$\%\^\& \*\(\)\-\_\+\`\=\~\,\.\?\/\<\>\;\:\|\\\\]{1,500}$/", $concern)) {
+    $result_data->message = 'Your concern(s) are invalid. Please only use latin characters a-z with an optional \'!@#$%^&*()_-+=:;?.`~<>\', '
+        . 'comma, apostrophe, or period. Your response is also limited to 500 characters.';
     echo json_encode($result_data);
     die();
 }
 
 // check academic comments
-if (!preg_match("/^[A-Za-z0-9\.\!\@\#\$\%\^\& \*\(\)\-\_\+\=\`\~\,\.\?\/\<\>\;\:\.]{1,500}$/", $academic_comment)) {
-    $result_data->message = 'Your comments on academics is invalid. Please only use latin characters a-z with an optional \'!@#$%^&*()_-+=:;?.`~<>, \',.'
-        . 'apostrophe, or period. Your response is also limited to 500 characters.';
+if (!preg_match("/^[A-Za-z0-9\.\'\!\@\#\$\%\^\& \*\(\)\-\_\+\`\=\~\,\.\?\/\<\>\;\:\|\\\\]{1,500}$/", $academic_comment)) {
+    $result_data->message = 'Your comments on academics is invalid. Please only use latin characters a-z with an optional \'!@#$%^&*()_-+=:;?.`~<>\', '
+        . 'comma, apostrophe, or period. Your response is also limited to 500 characters.';
     echo json_encode($result_data);
     die();
 }
 
 // check coop comments
-if (!preg_match("/^[A-Za-z0-9\.\!\@\#\$\%\^\& \*\(\)\-\_\+\=\`\~\,\.\?\/\<\>\;\:\.]{1,500}$/", $coop_comment)) {
-    $result_data->message = 'Your comments on co-ops is invalid. Please only use latin characters a-z with an optional \'!@#$%^&*()_-+=:;?.`~<>, \',.'
-        . 'apostrophe, or period. Your response is also limited to 500 characters.';
+if (!preg_match("/^[A-Za-z0-9\.\'\!\@\#\$\%\^\& \*\(\)\-\_\+\`\=\~\,\.\?\/\<\>\;\:\|\\\\]{1,500}$/", $coop_comment)) {
+    $result_data->message = 'Your comments on co-ops is invalid. Please only use latin characters a-z with an optional \'!@#$%^&*()_-+=:;?.`~<>\', '
+        . 'comma, apostrophe, or period. Your response is also limited to 500 characters.';
     echo json_encode($result_data);
     die();
 }
 
 // check specific changes
-if (!preg_match("/^[A-Za-z0-9\.\!\@\#\$\%\^\& \*\(\)\-\_\+\=\`\~\,\.\?\/\<\>\;\:\.]{1,500}$/", $specific_changes)) {
-    $result_data->message = 'Your response regarding specific changes is invalid. Please only use latin characters a-z with an optional \'!@#$%^&*()_-+=:;?.`~<>, \',.'
-        . 'apostrophe, or period. Your response is also limited to 500 characters.';
+if (!preg_match("/^[A-Za-z0-9\.\'\!\@\#\$\%\^\& \*\(\)\-\_\+\`\=\~\,\.\?\/\<\>\;\:\|\\\\]{1,500}$/", $specific_changes)) {
+    $result_data->message = 'Your response regarding specific changes you want to see is invalid. Please only use latin characters a-z with an optional \'!@#$%^&*()_-+=:;?.`~<>\', '
+        . 'comma, apostrophe, or period. Your response is also limited to 500 characters.';
     echo json_encode($result_data);
     die();
 }
 
 // check academic resources response
-if (!preg_match("/^[A-Za-z0-9\.\!\@\#\$\%\^\& \*\(\)\-\_\+\=\`\~\,\.\?\/\<\>\;\:\.]{1,500}$/", $academic_resources)) {
-    $result_data->message = 'Your response regarding academic resources is invalid. Please only use latin characters a-z with an optional \'!@#$%^&*()_-+=:;?.`~<>, \',.'
-        . 'apostrophe, or period. Your response is also limited to 500 characters.';
+if (!preg_match("/^[A-Za-z0-9\.\'\!\@\#\$\%\^\& \*\(\)\-\_\+\`\=\~\,\.\?\/\<\>\;\:\|\\\\]{1,500}$/", $academic_resources)) {
+    $result_data->message = 'Your response regarding academic resources is invalid. Please only use latin characters a-z with an optional \'!@#$%^&*()_-+=:;?.`~<>\', '
+        . 'comma, apostrophe, or period. Your response is also limited to 500 characters.';
     echo json_encode($result_data);
     die();
 }
 
 // check co-op resources response
-if (!preg_match("/^[A-Za-z0-9\.\'\!\@\#\$\%\^\& \*\(\)\-\_\+\`\=\~\,\.\?\/\<\>\;\:]{1,500}$/", $coop_resources)) {
+if (!preg_match("/^[A-Za-z0-9\.\'\!\@\#\$\%\^\& \*\(\)\-\_\+\`\=\~\,\.\?\/\<\>\;\:\|\\\\]{1,500}$/", $coop_resources)) {
     $result_data->message = 'Your response regarding co-op resources is invalid. Please only use latin characters a-z with an optional \'!@#$%^&*()_-+=:;?.`~<>\', '
         . 'comma, apostrophe, or period. Your response is also limited to 500 characters.';
     echo json_encode($result_data);
@@ -198,25 +199,25 @@ try {
     $email_msg .= "Someone has filled out the Progress CEAS form on " . $currentDate . "!<br /> <br />";
 
     if ($disclose_contact == "Yes") {
-        $email_msg .= "Name: " . $name . " <br />";
+        $email_msg .= "Name: " . stripslashes($name) . " <br />";
         $email_msg .= "Major: " . $major . " <br />";
         $email_msg .= "Graduation Year: " . $grad_year . " <br />";
         $email_msg .= "UC Email: " . $email . " <br /> <br />";
     } else {
         $email_msg .= "<b>The user did not want to disclose their contact information.</b> <br /> <br />";
     }
-    $email_msg .= "What concern brought you to this form?<br />" . $concern . " <br /> <br />";
-    $email_msg .= "How satisfied are you with your academic environment at CEAS?<br />" . $academic_satisfied_level . " <br /> <br />";
-    $email_msg .= "How satisfied are you with your co-op experience at CEAS?<br />" . $coop_satisfied_level . " <br /> <br />";
-    $email_msg .= "What comments on academics do you have?<br />" . $academic_comment . " <br /> <br />";
-    $email_msg .= "What comments on co-op do you have?<br />" . $coop_comment . " <br /> <br />";
-    $email_msg .= "What specific changes do you want to see based on your previous responses?<br />" . $specific_changes . " <br /> <br />";
-    $email_msg .= "What resources have been helpful to you in navigating your academic life?<br />" . $academic_resources . " <br /> <br />";
-    $email_msg .= "What resources have been helpful in navigating your co-op searches?<br />" . $coop_resources . " <br /> <br />";
+    $email_msg .= "<u>What concern brought you to this form?</u><br />" . stripslashes($concern) . " <br /> <br />";
+    $email_msg .= "<u>How satisfied are you with your academic environment at CEAS?</u><br />" . stripslashes($academic_satisfied_level) . " <br /> <br />";
+    $email_msg .= "<u>How satisfied are you with your co-op experience at CEAS?</u><br />" . stripslashes($coop_satisfied_level) . " <br /> <br />";
+    $email_msg .= "<u>What comments on academics do you have?</u><br />" . stripslashes($academic_comment) . " <br /> <br />";
+    $email_msg .= "<u>What comments on co-op do you have?</u><br />" . stripslashes($coop_comment) . " <br /> <br />";
+    $email_msg .= "<u>What specific changes do you want to see based on your previous responses?</u><br />" . stripslashes($specific_changes) . " <br /> <br />";
+    $email_msg .= "<u>What resources have been helpful to you in navigating your academic life?</u><br />" . stripslashes($academic_resources) . " <br /> <br />";
+    $email_msg .= "<u>What resources have been helpful in navigating your co-op searches?</u><br />" . stripslashes($coop_resources) . " <br /> <br />";
 
     if ($disclose_contact == "Yes") {
-        $email_msg .= "Would you be willing to talk to the student-led Academic Affairs Committee about your comments?<br />" . $student_led . " <br /> <br />";
-        $email_msg .= "Would you like us to follow up with you on any steps we take?<br />" . $follow_up . " <br /> <br />";
+        $email_msg .= "<u>Would you be willing to talk to the student-led Academic Affairs Committee about your comments?</u><br />" . $student_led . " <br /> <br />";
+        $email_msg .= "<u>Would you like us to follow up with you on any steps we take?</u><br />" . $follow_up . " <br /> <br />";
     }
 
     $email_msg .= "<b>Please reach out to one of the tech chairs through Slack or just reply to this email if you have any questions.</b> <br /> <br />";
@@ -239,4 +240,4 @@ try {
 $result_data->status = "success";
 echo json_encode($result_data);
 
-mysqli_close($mysqli);
+// mysqli_close($mysqli);
