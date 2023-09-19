@@ -100,12 +100,6 @@ const sendRequest = function sendRequest(
   }
   displayWarning("preparing to send data to php backend");
 
-  // Only keep this for development. Delete this when pushing to production
-  setTimeout(() => {
-    formSubmitButton.style.display = "block";
-    formLoader.style.display = "none";
-  }, 500);
-
   const submissionData = {
     discloseContact: discloseContact.value,
     fullName: fullName,
@@ -137,9 +131,11 @@ const sendRequest = function sendRequest(
     .then((response) => response.json())
     .then((data) => {
       if (data.status === "success") {
-        document.querySelector(".intro .request-form").style.display = "none";
+        document.querySelector(".intro .progress-ceas-form").style.display = "none";
         document.querySelector(".reserved-ticket").style.display = "block";
-        document.querySelector(".reserved-ticket .reserved-email").textContent = email.value;
+        if (discloseContact.value === "Yes" && studentLed === "Yes" && followUp === "Yes") {
+          document.querySelector(".reserved-ticket .extra").textContent = "One of the CEAS Tribunal Academic Affairs chairs may reach out to you!";
+        }
       } else {
         displayWarning(data.message);
         formLoader.style.display = "none";
@@ -188,7 +184,6 @@ export default function reserveTicket(
     }
 
     if (!isFieldMissing) {
-      displayWarning("main form is good");
       sendRequest(
         discloseContact,
         concern,
