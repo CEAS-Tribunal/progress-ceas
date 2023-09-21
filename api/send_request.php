@@ -141,10 +141,12 @@ $chair_1_name  = '';
 $chair_1_email = '';
 $chair_2_name  = '';
 $chair_2_email = '';
+$chair_3_name  = '';
+$chair_3_email = '';
 
 $super_email = '';
 
-$sql  = 'SELECT `chair_1_name`, `chair_1_email`, `chair_2_name`, `chair_2_email`, `super_email` FROM `progress_ceas_admin`';
+$sql  = 'SELECT `chair_1_name`, `chair_1_email`, `chair_2_name`, `chair_2_email`, `chair_3_name`, `chair_3_email`, `super_email` FROM `progress_ceas_admin`';
 $result = $mysqli->query($sql);
 
 if ($result) {
@@ -153,12 +155,14 @@ if ($result) {
         $chair_1_email = $row["chair_1_email"];
         $chair_2_name  = $row["chair_2_name"];
         $chair_2_email = $row["chair_2_email"];
+        $chair_3_name  = $row["chair_3_name"];
+        $chair_3_email = $row["chair_3_email"];
 
         $super_email = $row["super_email"];
     }
 }
 
-if ($chair_1_name === "" || $chair_1_email === "" || $chair_2_name === "" || $chair_2_email === "" || $super_email === "") {
+if ($chair_1_name === "" || $chair_1_email === "" || $chair_2_name === "" || $chair_2_email === "" || $chair_3_name === "" || $chair_3_email === "" || $super_email === "") {
     $result_data->message = "Error occurred while retrieving admin information. Please try again. "
         . "If the error persists, email the admin in the description.";
     echo json_encode($result_data);
@@ -188,7 +192,6 @@ if (!$result) {
 
 $mail = new PHPMailer(true);
 
-// Emailing Academic Affairs chairs
 //TODO: Change font style and size
 try {
     $mail->IsHTML(true);
@@ -227,8 +230,9 @@ try {
 
     $mail->Body = $email_msg;
     $mail->setFrom($super_email);
-    $mail->addAddress($chair_1_email, $chair_1_name); //TODO: replace with academic affairs chairs' info in phpmyadmin
-    //$mail->addAddress($chair_2_email, $chair_2_name);
+    $mail->addAddress($chair_1_email, $chair_1_name);
+    $mail->addAddress($chair_2_email, $chair_2_name);
+    $mail->addAddress($chair_3_email, $chair_3_name);
 
     $mail->send();
 } catch (Exception $e) {
@@ -240,4 +244,4 @@ try {
 $result_data->status = "success";
 echo json_encode($result_data);
 
-// mysqli_close($mysqli);
+mysqli_close($mysqli);
