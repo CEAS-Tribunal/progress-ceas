@@ -10,7 +10,7 @@ import displayWarning from "./warning-view.js";
 const checkField = function checkForMissingField(field) {
   let isFieldMissing = false;
 
-  if (field === "N/A" || field.value === "N/A") {
+  if (field === "N/A" || field.value === "N/A" || field === "" || field.value === "") {
     //field.classList.add("missing");
     isFieldMissing = true;
   }
@@ -58,7 +58,6 @@ const sendRequest = function sendRequest(
   let followUp = "N/A";
 
   if (discloseContact.value === "Yes") {
-    let isFieldMissing = false;
     let missingItems = [];
     fullName = formFullName.value;
     major = formMajor.value;
@@ -85,10 +84,8 @@ const sendRequest = function sendRequest(
     missingItems.push(checkField(followUp));
 
     if (missingItems.includes(true)) {
-      isFieldMissing = true;
-      //TODO: count number of 'true' elements in the array and add that to the warning message: https://www.geeksforgeeks.org/count-occurrences-of-all-items-in-an-array-in-javascript/#
-      // Use backticks (` `) when injecting a variable into displayWarning (rather than concatenation)
-      displayWarning("You have not filled out your contact info and/or the last 2 mc questions.");
+      let numIncompleteQuestions = missingItems.filter((x) => x == true).length;
+      displayWarning(`You have not filled out your contact info and/or the last 2 mc questions. You have ${numIncompleteQuestions} question(s) remaining.`);
 
       setTimeout(() => {
         formSubmitButton.style.display = "block";
@@ -98,7 +95,7 @@ const sendRequest = function sendRequest(
       return;
     }
   }
-  displayWarning("preparing to send data to php backend");
+  // displayWarning("preparing to send data to php backend");
 
   const submissionData = {
     discloseContact: discloseContact.value,
@@ -160,7 +157,6 @@ export default function reserveTicket(
   academicResources,
   coopResources
 ) {
-  // TODO: put everything after this if statement in an else block
   if (discloseContact === undefined) {
     displayWarning("Please choose whether to disclose your contact information or not.");
   } else {
@@ -178,9 +174,12 @@ export default function reserveTicket(
 
     if (missingItems.includes(true)) {
       isFieldMissing = true;
-      //TODO: count number of 'true' elements in the array and add that to the warning message: https://www.geeksforgeeks.org/count-occurrences-of-all-items-in-an-array-in-javascript/#
-      // Use backticks (` `) when injecting a variable into displayWarning (rather than concatenation)
-      displayWarning("You have not completed the main form.");
+      let numIncompleteQuestions = missingItems.filter((x) => x == true).length;
+      if (numIncompleteQuestions === 1) {
+        displayWarning(`Please complete the main form. You have ${numIncompleteQuestions} question remaining.`);
+      } else {
+        displayWarning(`Please complete the main form. You have ${numIncompleteQuestions} questions remaining.`);
+      }
     }
 
     if (!isFieldMissing) {
