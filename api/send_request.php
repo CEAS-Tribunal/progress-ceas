@@ -143,10 +143,12 @@ $chair_2_name  = '';
 $chair_2_email = '';
 $chair_3_name  = '';
 $chair_3_email = '';
+$intern_1_name  = '';
+$intern_1_email = '';
 
 $super_email = '';
 
-$sql  = 'SELECT `chair_1_name`, `chair_1_email`, `chair_2_name`, `chair_2_email`, `chair_3_name`, `chair_3_email`, `super_email` FROM `progress_ceas_admin`';
+$sql  = 'SELECT `chair_1_name`, `chair_1_email`, `chair_2_name`, `chair_2_email`, `chair_3_name`, `chair_3_email`, `intern_1_name`, `intern_1_email`, `super_email` FROM `progress_ceas_admin`';
 $result = $mysqli->query($sql);
 
 if ($result) {
@@ -157,12 +159,14 @@ if ($result) {
         $chair_2_email = $row["chair_2_email"];
         $chair_3_name  = $row["chair_3_name"];
         $chair_3_email = $row["chair_3_email"];
+        $intern_1_name = $row["intern_1_name"];
+        $intern_1_email = $row["intern_1_email"];
 
         $super_email = $row["super_email"];
     }
 }
 
-if ($chair_1_name === "" || $chair_1_email === "" || $chair_2_name === "" || $chair_2_email === "" || $chair_3_name === "" || $chair_3_email === "" || $super_email === "") {
+if ($chair_1_name === "" || $chair_1_email === "" || $chair_2_name === "" || $chair_2_email === "" || $chair_3_name === "" || $chair_3_email === "" || $intern_1_name === "" || $intern_1_email === "" || $super_email === "") {
     $result_data->message = "Error occurred while retrieving admin information. Please try again. "
         . "If the error persists, email the admin in the description.";
     echo json_encode($result_data);
@@ -198,7 +202,7 @@ try {
 
     $mail->Subject = "Progress CEAS Response Received";
 
-    $email_msg = "Hello " . $chair_1_name . " and " . $chair_2_name . ",<br /> <br />";
+    $email_msg = "Hello " . $chair_1_name . ", " . $chair_2_name . ", and " . $intern_1_name . ",<br /> <br />";
     $email_msg .= "Someone has filled out the Progress CEAS form on " . $currentDate . "!<br /> <br />";
 
     if ($disclose_contact == "Yes") {
@@ -233,6 +237,7 @@ try {
     $mail->addAddress($chair_1_email, $chair_1_name);
     $mail->addAddress($chair_2_email, $chair_2_name);
     $mail->addAddress($chair_3_email, $chair_3_name);
+    $mail->addAddress($intern_1_email, $intern_1_name);
 
     $mail->send();
 } catch (Exception $e) {
