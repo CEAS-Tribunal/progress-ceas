@@ -1,5 +1,5 @@
 # Progress CEAS
-The Progress CEAS form allows students in the College of Engineering and Applied Science at the University of Cincinnati to voice their concerns regarding their academic and co-op experience(s). This form allows the Academic Affairs chairs of the [College of Engineering and Applied Science Tribunal](https://tribunal.uc.edu) to review the information submitted by students and act as deemed necessary.
+The Progress CEAS form allows students in the College of Engineering and Applied Science at the University of Cincinnati to provide feedback on their academic and co-op experience(s). This form allows the Academic Affairs chairs of the [College of Engineering and Applied Science Tribunal](https://tribunal.uc.edu) to review the information submitted by students and act as deemed necessary.
 
 ## Use Case
 ### Data Flow
