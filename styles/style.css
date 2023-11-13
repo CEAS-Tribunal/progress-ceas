@@ -155,15 +155,15 @@ form input[type="image"] {
 }
 
 textarea {
-  width: 90%;
+  width: 87.8%;
   padding: 12px 10px;
-  margin: 8px auto;
+  margin: 10px auto;
   display: block;
   border: 2px solid #ccc;
   border-radius: 6px;
   outline: 0;
   font-family: "Roboto",sans-serif;
-  max-width: 90%;
+  max-width: 87.8%;
   transition: border-bottom 60ms ease-in;
 }
 
