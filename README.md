@@ -13,7 +13,7 @@ Prerequisites:
 - Node.js
 
 1. `cd` into the MAMP folder.
-2. `git clone https://github.com/omaralsayed/ceas-reimbursement.git` and click enter to clone repo (alternatively, you can use the SSH clone if you have that set up).
+2. `git clone https://github.com/CEAS-Tribunal/progress-ceas.git` and click enter to clone repo (alternatively, you can use the SSH clone if you have that set up).
 3. Change the name of the repo folder to htdocs and then `cd` into htdocs.
 4. Run `npm install` to install all of the needed modules for the project.
 5. Run `npm install gulp-cli -g` to install Gulp globally.
